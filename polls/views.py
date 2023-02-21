@@ -58,3 +58,12 @@ def check_session(request):
     email = request.session.get('email', None)
 
     return email is not None
+
+
+def logout(request):
+    try:
+        del request.session['email']
+
+    except:
+        return HttpResponse("Logout is not working", content_type='text/plain')
+    return HttpResponseRedirect('/')
