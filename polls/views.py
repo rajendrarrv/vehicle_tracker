@@ -47,9 +47,7 @@ def login(request):
     else:
         user = query_set[0]
         request.session['email'] = user.email_text
-        if check_session(request):
-            return HttpResponseRedirect('dashboard')
-        return HttpResponse("Welome to vehical tracker", content_type='text/plain')
+        return HttpResponseRedirect('dashboard')
 
 
 def dashboard(request):
