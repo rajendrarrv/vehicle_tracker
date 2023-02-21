@@ -1,13 +1,18 @@
+from itertools import count
 from sqlite3 import IntegrityError
 from time import timezone
 
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from sqlalchemy import null
+
 from polls.models import User
 from django.utils import timezone
 
 
 def home(request):
+    if check_session(request):
+        return HttpResponseRedirect('dashboard')
     return render(request, 'polls/index.html')
 
 
@@ -34,4 +39,24 @@ def registration(request):
 
 
 def login(request):
-    return HttpResponse("this is login page", content_type='text/plain')
+    username = request.POST.get("username", "")
+    password = request.POST.get("password", "")
+    query_set = User.objects.filter(email_text=username).filter(password_text=password)
+    if len(query_set) == 0:
+        return HttpResponse("User does not exit", content_type='text/plain')
+    else:
+        user = query_set[0]
+        request.session['email'] = user.email_text
+        if check_session(request):
+            return HttpResponseRedirect('dashboard')
+        return HttpResponse("Welome to vehical tracker", content_type='text/plain')
+
+
+def dashboard(request):
+    return render(request, 'polls/dashboard.html')
+
+
+def check_session(request):
+    email = request.session.get('email', None)
+
+    return email is not None
