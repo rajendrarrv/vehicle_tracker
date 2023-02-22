@@ -47,11 +47,15 @@ def login(request):
     else:
         user = query_set[0]
         request.session['email'] = user.email_text
+        request.session['name'] = user.name_text
+        request.session['mobile'] = user.mobile_no_text
         return HttpResponseRedirect('dashboard')
 
 
 def dashboard(request):
-    return render(request, 'polls/dashboard.html')
+    context = {'name': request.session['name']}
+
+    return render(request, 'polls/dashboard.html', context)
 
 
 def check_session(request):

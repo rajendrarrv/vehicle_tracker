@@ -1,91 +1,137 @@
 <!DOCTYPE html>
 {% load static  %}
-<html>
+<html lang="en">
 
 <head>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 <body>
-
-<h2>Modal Login Form</h2>
-
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Registration</button>
-
-
-<div id="id01" class="modal">
-
-    <form class="modal-content animate" action="/login" method="post">
-        {% csrf_token %}
-        <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <img src="{% static  'img/img_avatar2.png' %}" alt="Avatar" class="avatar">
-        </div>
-
-        <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="username" required>
-
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
-
-            <button type="submit">Login</button>
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
-        </div>
-
-        <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">
-                Cancel
+<main>
+    <nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Vehical Tracker</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01"
+                    aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation"
+                    style="width:auto;">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
+
+            <div class="collapse navbar-collapse" id="navbarsExample01">
+                <ul class="navbar-nav me-auto mb-2">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form role="search">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                </form>
+            </div>
         </div>
-    </form>
+    </nav>
+</main>
+<div class="container py-4 px-3 mx-auto">
+    <h1>Hello, Bootstrap and Webpack!</h1>
+    <button class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+        Login
+    </button>
+    <button class="btn btn-secondary" onclick="document.getElementById('id02').style.display='block'"
+            style="width:auto;">
+        Sign up
+    </button>
+</div>
+
+<div id="id01" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content animate" action="/login" method="post">
+            {% csrf_token %}
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <img src="{% static  'img/img_avatar2.png' %}" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+                <label for="uname">Username</label>
+                <input type="text"  class="form-control" placeholder="Enter Username" name="username" required>
+
+                <label for="psw">Password</label>
+                <input type="password"  class="form-control" placeholder="Enter Password" name="password" required>
+
+                <button type="submit" class="btn btn-primary">Login</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" class="btn btn-danger"
+                        onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">
+                    Cancel
+                </button>
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+        </form>
+    </div>
 </div>
 
 
-<div id="id02" class="modal">
+<div id="id02" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content animate" action="/registration" method="post">
+            {% csrf_token %}
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <img src="{% static  'img/img_avatar2.png' %}" alt="Avatar" class="avatar">
+            </div>
 
-    <form class="modal-content animate" action="/registration" method="post">
-        {% csrf_token %}
-        <div class="imgcontainer">
-            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <img src="{% static  'img/img_avatar2.png' %}" alt="Avatar" class="avatar">
-        </div>
+            <div class="container">
+                <label for="name">Name</label>
+                <input type="text" placeholder="name" name="name" required>
 
-        <div class="container">
-            <label for="name"><b>Name</b></label>
-            <input type="text" placeholder="name" name="name" required>
+                <label for="email">Email</label>
+                <input type="text" placeholder="email " name="email" required>
+                <label for="mobile">Mobile</label>
+                <input type="text" placeholder="mobile no " name="mobile_no" required>
 
-            <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="email " name="email" required>
-            <label for="mobile"><b>Mobile</b></label>
-            <input type="text" placeholder="mobile no " name="mobile_no" required>
+                <label for="password">Password</label>
+                <input type="text" placeholder="password" name="password" required>
+                <label for="confirm_password">Confirm Password</label>
+                <input type="text" placeholder="confirm password" name="confirm_password" required>
+                <button type="submit" class="btn btn-primary" >Registration</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </div>
 
-            <label for="password"><b>Password</b></label>
-            <input type="text" placeholder="password" name="password" required>
-            <label for="confirm_password"><b>Confirm Password</b></label>
-            <input type="text" placeholder="confirm password" name="confirm_password" required>
-            <button type="submit">Registration</button>
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
-        </div>
-
-        <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">
-                Cancel
-            </button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
-        </div>
-    </form>
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" class="btn btn-danger" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">
+                    Cancel
+                </button>
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+        </form>
+    </div>
 </div>
-<script src="js/script.js"></script>
+<script src="./static/js/script.js"></script>
+<script src="./static/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 </html>
