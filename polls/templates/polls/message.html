@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static  %}
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>{{title}}</title>
+</head>
+<body>
+<main class="container" >
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="width:auto;">
+        <strong>{{title}} !</strong> {{message}}.
+        <button type="button" class="close" href="/" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</main>
+</body>
+
+<script src="./static/js/script.js"></script>
+<script src="./static/js/bootstrap.bundle.min.js"></script>
+</html>

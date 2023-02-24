@@ -66,6 +66,62 @@
         -webkit-overflow-scrolling: touch;
       }
 
+
+.padding{
+ border: 1px solid red;
+  padding: 10px;
+  width:300px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </style>
 
 
@@ -73,19 +129,93 @@
 <body>
 
 <main class="container">
-    <div id ='home' class="bg-light p-5 rounded mt-1">
+    <div id='home' class="bg-light p-5 rounded mt-1">
         <h1>Home</h1>
-        <p class="lead">This example is a quick exercise to illustrate how the bottom navbar works.</p>
-        <a class="btn btn-lg btn-primary" href="../components/navbar/" role="button">View navbar docs &raquo;</a>
+        <p class="lead">Recent trip history.</p>
+        <ul class="list-group">
+            <li class="list-group-item active">Indore to Bhopal</li>
+            <li class="list-group-item">Bhopal to Haswa</li>
+            <li class="list-group-item">Bhopal to Lucknow</li>
+            <li class="list-group-item disabled">Bhopal to Delhi</li>
+            <li class="list-group-item disabled ">Bhopal to Bangalore</li>
+        </ul>
+
+
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-4">
+                </div>
+                <div class="col-4">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Create Trip
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">New Trip</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/login" method="post">
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Name of trip</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1"
+                                                   placeholder="name of trip">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Name of driver</label>
+                                            <input type="text" class="form-control" id="name_of_driver"
+                                                   placeholder="self/name of driver">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="destination" class="form-label">Enter destination</label>
+                                            <input class="form-control" id="destination" placeholder="enter destination"
+                                            ></input>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="vehical" class="form-label">Select vehicle</label>
+                                            <input class="form-control" id="vehicle" placeholder="enter destination"
+                                            ></input>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="tracker" class="form-label">Add tracker</label>
+                                            <input class="form-control" id="owner"
+                                                   placeholder="self/driver/mobile/vehicle-self-tracker"
+                                            ></input>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                Close
+                                            </button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id ='map' class="bg-light p-5 rounded mt-1" style="display: none;">
+    <div id='map' class="bg-light p-5 rounded mt-1" style="display: none;">
         <h1>Map</h1>
         <p class="lead">This example is a quick exercise to illustrate how the bottom navbar works.</p>
         <a class="btn btn-lg btn-primary" href="../components/navbar/" role="button">View navbar docs &raquo;</a>
     </div>
 
-    <div id ='profile' class="bg-light p-5 rounded mt-1" style="display: none;">
+    <div id='profile' class="bg-light p-5 rounded mt-1" style="display: none;">
         <h1>{{name}}</h1>
         <p class="lead">This example is a quick exercise to illustrate how the bottom navbar works.</p>
         <a class="btn btn-lg btn-primary" href="../components/navbar/" role="button">View navbar docs &raquo;</a>
@@ -105,11 +235,11 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" onclick="divVisibility('home');">Home</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link active " onclick="divVisibility('map');">Map</a>
+                <li class="nav-item ">
+                    <a class="nav-link  " onclick="divVisibility('map');">Map</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" >Disabled</a>
+                    <a class="nav-link">Trip history</a>
                 </li>
                 <li class="nav-item dropup">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"

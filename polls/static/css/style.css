@@ -96,4 +96,9 @@ span.psw {
   .cancelbtn {
      width: 100%;
   }
+
+  p.padding {
+  border: 1px solid red;
+  padding: 35px;
+}
 }

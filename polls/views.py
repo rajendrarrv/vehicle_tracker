@@ -38,12 +38,18 @@ def registration(request):
     return HttpResponse(msg, content_type='text/plain')
 
 
+def message(request, title, message):
+    context = {'title': title, 'message': message}
+    return render(request, 'polls/message.html', context)
+
+
 def login(request):
     username = request.POST.get("username", "")
     password = request.POST.get("password", "")
     query_set = User.objects.filter(email_text=username).filter(password_text=password)
     if len(query_set) == 0:
-        return HttpResponse("User does not exit", content_type='text/plain')
+
+        return message(request, title="Error", message="user does not exist")
     else:
         user = query_set[0]
         request.session['email'] = user.email_text
