@@ -83,45 +83,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </style>
 
 
@@ -133,11 +94,46 @@
         <h1>Home</h1>
         <p class="lead">Recent trip history.</p>
         <ul class="list-group">
-            <li class="list-group-item active">Indore to Bhopal</li>
-            <li class="list-group-item">Bhopal to Haswa</li>
-            <li class="list-group-item">Bhopal to Lucknow</li>
-            <li class="list-group-item disabled">Bhopal to Delhi</li>
-            <li class="list-group-item disabled ">Bhopal to Bangalore</li>
+            <li class="list-group-item list-group-item-success accordion">Indore to Bhopal</li>
+            <div class="panel" style="display: none;">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commodo consequat.</p>
+            </div>
+            <li class="list-group-item list-group-item-danger accordion">Bhopal to Haswa</li>
+            <div class="panel" style="display: none;">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commodo consequat.</p>
+            </div>
+            <li class="list-group-item list-group-item-warning accordion">Bhopal to Lucknow</li>
+            <div class="panel" style="display: none;">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commodo consequat.</p>
+            </div>
+            <li class="list-group-item list-group-item-success accordion">Bhopal to Delhi</li>
+            <div class="panel" style="display: none;">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commodo consequat.</p>
+            </div>
+            <li class="list-group-item list-group-item-danger accordion">Bhopal to Bangalore</li>
+            <div class="panel" style="display: none;">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commodo consequat.</p>
+            </div>
         </ul>
 
 
@@ -256,6 +252,31 @@
 </nav>
 
 
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+
+
+
+
+
+
+
+
+
+</script>
 <script src="./static/js/script.js"></script>
 <script src="./static/js/bootstrap.bundle.min.js"></script>
 
