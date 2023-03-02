@@ -9,6 +9,7 @@ from sqlalchemy import null
 
 from polls.models import User
 from django.utils import timezone
+from django.http import JsonResponse
 
 
 def home(request):
@@ -29,13 +30,16 @@ def registration(request):
                     pub_date=timezone.now())
         user.save()
 
-        msg = {"data": "record is saved successfully", "error": {}}
-        HttpResponse(str(msg), content_type='text/plain')
+        msg = '{"data": "record is saved successfully", "error": {}}'
+        response = JsonResponse(msg)
+
+        HttpResponse(response.content, content_type='text/plain')
     except Exception as e:
         msg = "user is already exist"
-        msg = {"data": {}, "error": e}
+        msg = '{"data": {}, "error": e}'
+        response = JsonResponse(msg)
 
-        return HttpResponse(str(msg), content_type='text/plain')
+        return HttpResponse(response.content, content_type='text/plain')
     return HttpResponse(msg, content_type='text/plain')
 
 
@@ -49,16 +53,15 @@ def login(request):
     username = request.POST.get("username", "")
     password = request.POST.get("password", "")
     query_set = User.objects.filter(email_text=username).filter(password_text=password)
-
     if not query_set.exists():
-        # The Queryset is empty ...
         msg = {"error": "something is going wrong"}
-        return HttpResponse(str(msg), content_type='text/plain')
+        response = JsonResponse(msg)
+        return HttpResponse(response.content, content_type='text/plain')
     else:
-        # The Queryset has results ...
         user = query_set[0]
         msg = {"data": {"email": user.email_text, "name": user.name_text, "mobile": user.mobile_no_text}, "error": {}}
-    return HttpResponse(str(msg), content_type='text/plain')
+        response = JsonResponse(msg)
+    return HttpResponse(response.content, content_type='text/plain')
 
 
 def dashboard(request):
